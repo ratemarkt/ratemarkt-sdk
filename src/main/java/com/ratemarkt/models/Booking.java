@@ -15,60 +15,57 @@ import org.immutables.value.Value;
 @Value.Immutable
 public interface Booking {
 
-	BigDecimal getBalance();
+	BookingStatus getStatus();
 
 	String getBookingRef();
 
-	LocalDate getCheckin();
-
 	String getClientRef();
-
-	String getBoardName();
-
-	@Nullable
-	BigDecimal getCommission();
-
-	OffsetDateTime getCreationDate();
-
-	Currency getCurrency();
-
-	LocalDate getCheckout();
-
-	Holder getHolder();
 
 	String getHotelCode();
 
+	LocalDate getCheckin();
+
+	LocalDate getCheckout();
+
+	String getNationality();
+
+	Holder getHolder();
+
+	List<Occupancy> getOccupancy();
+
+	OffsetDateTime getCreationDate();
+
+	String getRateKey();
+
+	RateType getRateType();
+
+	String getBoardName();
+
+	Boolean getNonrefundable();
+
+	List<CancellationPolicy> getCancellationPolicies();
+
+	BigDecimal getTotal();
+
+	Currency getCurrency();
+
+	BigDecimal getBalance();
+
 	@Nullable
-	Currency getHotelCurrency();
+	BigDecimal getCancellationCost();
+
+	@Nullable
+	BigDecimal getCommission();
 
 	@Nullable
 	BigDecimal getHotelRate();
 
 	@Nullable
-	String getNationality();
-
-	Boolean getNonrefundable();
-
-	List<Occupancy> getOccupancy();
-
-	@Nullable
-	String getRateKey();
-
-	RateType getRateType();
+	Currency getHotelCurrency();
 
 	@Nullable
 	String getSpecialRequest();
 
-	BookingStatus getStatus();
-
-	BigDecimal getTotal();
-
-	@Nullable
-	BigDecimal getCancellationCost();
-
-	List<CancellationPolicy> getCancellationPolicies();
-
 	@Nullable
 	String getRemarks();
-
 }

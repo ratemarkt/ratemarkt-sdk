@@ -9,6 +9,8 @@ import org.immutables.value.Value;
 @Value.Immutable
 public interface Occupant {
 
+	OccupantType getOccupantType();
+
 	@Nullable
 	Integer getAge();
 
@@ -17,7 +19,5 @@ public interface Occupant {
 
 	@Nullable
 	String getLastName();
-
-	OccupantType getOccupantType();
 
 }

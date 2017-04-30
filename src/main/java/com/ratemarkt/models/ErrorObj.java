@@ -1,5 +1,7 @@
 package com.ratemarkt.models;
 
+import javax.annotation.Nullable;
+
 import org.immutables.gson.Gson;
 import org.immutables.value.Value;
 
@@ -11,5 +13,6 @@ public interface ErrorObj {
 
 	String getMessage();
 
+	@Nullable
 	String getDetail();
 }

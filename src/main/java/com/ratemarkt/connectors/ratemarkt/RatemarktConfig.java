@@ -2,7 +2,9 @@ package com.ratemarkt.connectors.ratemarkt;
 
 public class RatemarktConfig {
 
-	private String baseUrl = "http://localhost:8080/api/v1/";
+	public static final String DEFAULT_BASE_URL = "http://localhost:8080/api/v1/";
+
+	private String baseUrl = DEFAULT_BASE_URL;
 	private String apiKey;
 
 	public String getApiKey() {

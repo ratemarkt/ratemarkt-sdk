@@ -45,6 +45,10 @@ import okhttp3.Response;
 
 public class RatemarktConnector extends ConfigurableConnector<RatemarktConfig> {
 
+	private static final String MEDIA_TYPE_APPLICATION_JSON = "application/json";
+	private static final String TOKEN_IDENTIFIER = "Bearer %s";
+	private static final String AUTHORIZATION_HEADER = "Authorization";
+
 	private final static String CHECK_HOTELS_ENDPOINT = "checkhotels";
 	private final static String CHECK_HOTEL_ENDPOINT = "checkhotel";
 	private final static String CHECK_RATE_ENDPOINT = "checkrate";
@@ -58,21 +62,24 @@ public class RatemarktConnector extends ConfigurableConnector<RatemarktConfig> {
 
 	public RatemarktConnector(RatemarktConfig config) {
 		super(config);
+
 		client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
 			@Override
 			public Response intercept(Chain chain) throws IOException {
 				Request.Builder requestBuilder = chain.request().newBuilder();
-				requestBuilder.addHeader("Authorization", String.format("Bearer %s", config.getApiKey()));
+				requestBuilder.addHeader(AUTHORIZATION_HEADER,
+						String.format("%s %s", TOKEN_IDENTIFIER, config.getApiKey()));
+
 				return chain.proceed(requestBuilder.build());
 			}
 
 		}).build();
 
 		baseUrlBuilder = HttpUrl.parse(config.getBaseUrl()).newBuilder();
-		gson = populateGsonBuilder().create();
+		gson = configureGsonBuilder().create();
 	}
 
-	private GsonBuilder populateGsonBuilder() {
+	protected GsonBuilder configureGsonBuilder() {
 		GsonBuilder gsonBuilder = new GsonFireBuilder().enableExposeMethodResult().createGsonBuilder();
 		Converters.registerLocalDate(gsonBuilder);
 		Converters.registerOffsetDateTime(gsonBuilder);
@@ -93,7 +100,7 @@ public class RatemarktConnector extends ConfigurableConnector<RatemarktConfig> {
 	private <T> T callEndPoint(ConnectorContext context, Query query, String endpoint, Class<T> returnType) {
 		String json = gson.toJson(query);
 		System.out.println(json);
-		RequestBody body = RequestBody.create(MediaType.parse("application/json"), json);
+		RequestBody body = RequestBody.create(MediaType.parse(MEDIA_TYPE_APPLICATION_JSON), json);
 
 		Request.Builder requestBuilder = populateBaseRequest(CHECK_HOTELS_ENDPOINT).post(body);
 
