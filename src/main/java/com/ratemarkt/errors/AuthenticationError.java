@@ -22,7 +22,7 @@ public class AuthenticationError extends ConnectorError {
 	}
 
 	@Override
-	public int getApiErrorCode() {
+	public int getErrorCode() {
 		return 40100;
 	}
 

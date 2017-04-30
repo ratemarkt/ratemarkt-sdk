@@ -8,16 +8,16 @@ public class ServiceUnavailableError extends ConnectorError {
 		super();
 	}
 
-	public ServiceUnavailableError(String message, Throwable cause) {
-		super(message, cause);
-	}
-
 	public ServiceUnavailableError(String message) {
 		super(message);
 	}
 
+	public ServiceUnavailableError(String message, Throwable cause) {
+		super(message, cause);
+	}
+
 	@Override
-	public int getApiErrorCode() {
+	public int getErrorCode() {
 		return 50001;
 	}
 

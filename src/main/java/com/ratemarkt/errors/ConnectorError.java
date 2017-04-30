@@ -16,9 +16,13 @@ public abstract class ConnectorError extends RuntimeException {
 		super(message, cause);
 	}
 
+	public ConnectorError(Throwable cause) {
+		super(cause);
+	}
+
 	public abstract int getHttpStatusCode();
 
-	public abstract int getApiErrorCode();
+	public abstract int getErrorCode();
 
 	public abstract String getCaption();
 

@@ -4,6 +4,10 @@ public class InstantiationError extends SystemError {
 
 	private static final long serialVersionUID = 1L;
 
+	public InstantiationError() {
+		super();
+	}
+
 	public InstantiationError(String message) {
 		super(message);
 	}

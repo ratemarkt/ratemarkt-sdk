@@ -21,7 +21,7 @@ public class RemoteError extends ConnectorError {
 	}
 
 	@Override
-	public int getApiErrorCode() {
+	public int getErrorCode() {
 		return errorObj.getErrorCode();
 	}
 

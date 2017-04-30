@@ -4,6 +4,10 @@ public class SystemError extends ConnectorError {
 
 	private static final long serialVersionUID = 1L;
 
+	public SystemError() {
+		super();
+	}
+
 	public SystemError(String message) {
 		super(message);
 	}
@@ -18,7 +22,7 @@ public class SystemError extends ConnectorError {
 	}
 
 	@Override
-	public int getApiErrorCode() {
+	public int getErrorCode() {
 		return 50000;
 	}
 

@@ -4,6 +4,10 @@ public class ValidationError extends ConnectorError {
 
 	private static final long serialVersionUID = 1L;
 
+	public ValidationError() {
+		super();
+	}
+
 	public ValidationError(String message) {
 		super(message);
 	}
@@ -18,7 +22,7 @@ public class ValidationError extends ConnectorError {
 	}
 
 	@Override
-	public int getApiErrorCode() {
+	public int getErrorCode() {
 		return 40000;
 	}
 

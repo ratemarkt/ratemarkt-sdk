@@ -9,7 +9,7 @@ public class NotAvailableError extends ConnectorError {
 	}
 
 	public NotAvailableError(Throwable cause) {
-		super(null, cause);
+		super(cause);
 	}
 
 	public NotAvailableError(String message) {
@@ -26,7 +26,7 @@ public class NotAvailableError extends ConnectorError {
 	}
 
 	@Override
-	public int getApiErrorCode() {
+	public int getErrorCode() {
 		return 41000;
 	}
 

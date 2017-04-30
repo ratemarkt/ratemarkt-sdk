@@ -8,12 +8,12 @@ public class AuthorizationError extends ConnectorError {
 		super();
 	}
 
-	public AuthorizationError(String message, Throwable cause) {
-		super(message, cause);
-	}
-
 	public AuthorizationError(String message) {
 		super(message);
+	}
+
+	public AuthorizationError(String message, Throwable cause) {
+		super(message, cause);
 	}
 
 	@Override
@@ -22,7 +22,7 @@ public class AuthorizationError extends ConnectorError {
 	}
 
 	@Override
-	public int getApiErrorCode() {
+	public int getErrorCode() {
 		return 40300;
 	}
 
