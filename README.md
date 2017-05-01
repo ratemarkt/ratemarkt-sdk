@@ -8,4 +8,7 @@ This library aims to help you develop your own Ratemarkt compliant java applicat
 * Add new connectors (hotel suppliers, supplier aggragtors, tech partners) to Ratemarkt Connector collections.
 * Add new plugins to add some extra functionality onto Ratemarkt connectors.
 
+
 Detailed documentation is coming soon...
+
+See also: [Ratemarkt Sample Client](https://github.com/ratemarkt/ratemarkt-sample-client)
