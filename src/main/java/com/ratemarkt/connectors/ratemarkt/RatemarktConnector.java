@@ -107,7 +107,7 @@ public class RatemarktConnector extends ConfigurableConnector<RatemarktConfig> {
 
 		RequestBody body = RequestBody.create(MediaType.parse(MEDIA_TYPE_APPLICATION_JSON), json);
 
-		Request.Builder requestBuilder = populateBaseRequest(CHECK_HOTELS_ENDPOINT).post(body);
+		Request.Builder requestBuilder = populateBaseRequest(endpoint).post(body);
 
 		Request request = requestBuilder.build();
 
