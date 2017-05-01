@@ -2,6 +2,10 @@ package com.ratemarkt.connectors.ratemarkt;
 
 import java.io.IOException;
 import java.util.ServiceLoader;
+import java.util.concurrent.TimeUnit;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.fatboyindustrial.gsonjavatime.Converters;
 import com.google.gson.Gson;
@@ -45,8 +49,10 @@ import okhttp3.Response;
 
 public class RatemarktConnector extends ConfigurableConnector<RatemarktConfig> {
 
+	final static Logger logger = LoggerFactory.getLogger(RatemarktConnector.class);
+
 	private static final String MEDIA_TYPE_APPLICATION_JSON = "application/json";
-	private static final String TOKEN_IDENTIFIER = "Bearer %s";
+	private static final String TOKEN_IDENTIFIER = "Bearer";
 	private static final String AUTHORIZATION_HEADER = "Authorization";
 
 	private final static String CHECK_HOTELS_ENDPOINT = "checkhotels";
@@ -57,7 +63,6 @@ public class RatemarktConnector extends ConfigurableConnector<RatemarktConfig> {
 	private final static String CANCEL_BOOKING_ENDPOINT = "cancelbooking";
 
 	private OkHttpClient client;
-	private HttpUrl.Builder baseUrlBuilder;
 	private Gson gson;
 
 	public RatemarktConnector(RatemarktConfig config) {
@@ -67,15 +72,14 @@ public class RatemarktConnector extends ConfigurableConnector<RatemarktConfig> {
 			@Override
 			public Response intercept(Chain chain) throws IOException {
 				Request.Builder requestBuilder = chain.request().newBuilder();
-				requestBuilder.addHeader(AUTHORIZATION_HEADER,
-						String.format("%s %s", TOKEN_IDENTIFIER, config.getApiKey()));
+				String header = String.format("%s %s", TOKEN_IDENTIFIER, config.getApiKey());
+				requestBuilder.addHeader(AUTHORIZATION_HEADER, header);
 
 				return chain.proceed(requestBuilder.build());
 			}
 
-		}).build();
+		}).connectTimeout(10, TimeUnit.SECONDS).readTimeout(30, TimeUnit.SECONDS).build();
 
-		baseUrlBuilder = HttpUrl.parse(config.getBaseUrl()).newBuilder();
 		gson = configureGsonBuilder().create();
 	}
 
@@ -94,19 +98,24 @@ public class RatemarktConnector extends ConfigurableConnector<RatemarktConfig> {
 	}
 
 	private Request.Builder populateBaseRequest(String path) {
-		return new Request.Builder().url(baseUrlBuilder.addPathSegment(path).build());
+		HttpUrl url = HttpUrl.parse(getConfig().getBaseUrl()).newBuilder().addPathSegment(path).build();
+		return new Request.Builder().url(url);
 	}
 
 	private <T> T callEndPoint(ConnectorContext context, Query query, String endpoint, Class<T> returnType) {
 		String json = gson.toJson(query);
-		System.out.println(json);
+
 		RequestBody body = RequestBody.create(MediaType.parse(MEDIA_TYPE_APPLICATION_JSON), json);
 
 		Request.Builder requestBuilder = populateBaseRequest(CHECK_HOTELS_ENDPOINT).post(body);
 
+		Request request = requestBuilder.build();
+
+		logger.debug(request.url().toString());
+
 		Response response = null;
 		try {
-			response = client.newCall(requestBuilder.build()).execute();
+			response = client.newCall(request).execute();
 		} catch (IOException e) {
 			throw new CommunicationError("Could not contact with server", e);
 		}
