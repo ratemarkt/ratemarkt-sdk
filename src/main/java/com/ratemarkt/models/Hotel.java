@@ -14,7 +14,16 @@ public interface Hotel {
 	String getHotelCode();
 
 	@Nullable
+	String getHotelName();
+
+	@Nullable
 	String getDestinationCode();
+
+	@Nullable
+	String getDestinationName();
+
+	@Nullable
+	String getCountryCode();
 
 	List<Rate> getRates();
 }
