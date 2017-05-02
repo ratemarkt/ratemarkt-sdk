@@ -11,4 +11,4 @@ This library aims to help you develop your own Ratemarkt compliant java applicat
 
 Detailed documentation is coming soon...
 
-See also: [Ratemarkt Sample Client](https://github.com/ratemarkt/ratemarkt-sample-client)
+See also: [Ratemarkt Sample WebApp](https://github.com/ratemarkt/ratemarkt-sample-webapp)
