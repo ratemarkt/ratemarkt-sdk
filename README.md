@@ -5,7 +5,7 @@ This library aims to help you develop your own Ratemarkt compliant java applicat
 # What can you do with the SDK?
 
 * Connect Ratemarkt API using `RatemarktConnector`.
-* Add new connectors (hotel suppliers, supplier aggragtors, tech partners) to Ratemarkt Connector collections.
+* Add new connectors (hotel suppliers, supplier aggragtors, tech partners) to Ratemarkt's connectors collection.
 * Add new plugins to add some extra functionality onto Ratemarkt connectors.
 
 
