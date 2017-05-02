@@ -1,5 +1,7 @@
 package com.ratemarkt.models;
 
+import javax.annotation.Nullable;
+
 import org.immutables.gson.Gson;
 import org.immutables.value.Value;
 
@@ -7,7 +9,9 @@ import org.immutables.value.Value;
 @Value.Immutable
 public interface CancelBookingQuery extends Query {
 
+	@Nullable
 	String getBookingRef();
 
+	@Nullable
 	String getClientRef();
 }

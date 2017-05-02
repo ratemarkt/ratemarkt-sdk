@@ -21,7 +21,7 @@ public interface Booking {
 
 	String getClientRef();
 
-	String getHotelCode();
+	Hotel getHotel();
 
 	LocalDate getCheckin();
 
@@ -35,12 +35,14 @@ public interface Booking {
 
 	OffsetDateTime getCreationDate();
 
+	@Nullable
 	String getRateKey();
 
 	RateType getRateType();
 
 	String getBoardName();
 
+	@Nullable
 	Boolean getNonrefundable();
 
 	List<CancellationPolicy> getCancellationPolicies();
