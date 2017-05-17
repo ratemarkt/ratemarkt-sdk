@@ -20,30 +20,22 @@ public interface Booking {
 	String getBookingRef();
 
 	String getClientRef();
-
-	Hotel getHotel();
+	
+	String getHotelCode();
 
 	LocalDate getCheckin();
 
 	LocalDate getCheckout();
 
-	String getNationality();
-
 	Holder getHolder();
 
-	List<Occupancy> getOccupancy();
+	List<Occupancy> getOccupancies();
 
 	OffsetDateTime getCreationDate();
-
-	@Nullable
-	String getRateKey();
 
 	RateType getRateType();
 
 	String getBoardName();
-
-	@Nullable
-	Boolean getNonrefundable();
 
 	List<CancellationPolicy> getCancellationPolicies();
 
@@ -52,6 +44,24 @@ public interface Booking {
 	Currency getCurrency();
 
 	BigDecimal getBalance();
+
+	@Nullable
+	String getRateKey();
+	
+	@Nullable
+	String getHotelName();
+	
+	@Nullable
+	String getDestinationCode();
+	
+	@Nullable
+	String getDestinationName();
+	
+	@Nullable
+	String getCountryCode();
+	
+	@Nullable
+	Boolean getNonrefundable();
 
 	@Nullable
 	BigDecimal getCancellationCost();
