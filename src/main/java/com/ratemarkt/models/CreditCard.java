@@ -9,9 +9,9 @@ public interface CreditCard {
 
 	String getCvv();
 
-	Integer getMonth();
+	String getMonth();
 
-	Integer getYear();
+	String getYear();
 
 	String getFirstName();
 
