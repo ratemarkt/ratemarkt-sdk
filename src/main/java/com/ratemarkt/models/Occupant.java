@@ -9,6 +9,7 @@ import org.immutables.value.Value;
 @Value.Immutable
 public interface Occupant {
 
+	@Nullable
 	OccupantType getOccupantType();
 
 	@Nullable

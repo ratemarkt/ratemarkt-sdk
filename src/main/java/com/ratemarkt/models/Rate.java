@@ -13,6 +13,8 @@ import org.immutables.value.Value;
 @Value.Immutable
 public interface Rate {
 
+	String getHotelCode();
+	
 	RateType getRateType();
 
 	String getRateKey();

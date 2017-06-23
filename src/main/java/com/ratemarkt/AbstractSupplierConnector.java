@@ -42,7 +42,7 @@ public abstract class AbstractSupplierConnector<T> extends ConfigurableConnector
 	}
 
 	public int getMaxHotelQueryLimit() {
-		return 1000;
+		return 200;
 	}
 
 	public QuerySupport getQuerySupport() {
