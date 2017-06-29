@@ -41,6 +41,10 @@ public abstract class AbstractSupplierConnector<T> extends ConfigurableConnector
 		throw new NotAvailableError();
 	}
 
+	public int getMaxRoomLimit() {
+		return 5;
+	}
+
 	public int getMaxHotelQueryLimit() {
 		return 200;
 	}

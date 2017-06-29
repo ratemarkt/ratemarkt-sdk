@@ -35,8 +35,6 @@ public interface Booking {
 
 	RateType getRateType();
 
-	String getBoardName();
-
 	List<CancellationPolicy> getCancellationPolicies();
 
 	BigDecimal getTotal();
@@ -44,6 +42,9 @@ public interface Booking {
 	Currency getCurrency();
 
 	BigDecimal getBalance();
+
+	@Nullable
+	String getBoardName();
 
 	@Nullable
 	String getRateKey();
