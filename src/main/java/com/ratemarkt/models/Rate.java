@@ -14,12 +14,14 @@ import org.immutables.value.Value;
 public interface Rate {
 
 	String getHotelCode();
-	
+
 	RateType getRateType();
 
 	String getRateKey();
 
 	Boolean getNonrefundable();
+
+	BoardType getBoardType();
 
 	String getBoardName();
 
