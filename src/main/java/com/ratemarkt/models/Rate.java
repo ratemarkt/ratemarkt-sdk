@@ -21,7 +21,7 @@ public interface Rate {
 
 	Boolean getNonrefundable();
 
-	BoardType getBoardType();
+	String getBoardType();
 
 	String getBoardName();
 
