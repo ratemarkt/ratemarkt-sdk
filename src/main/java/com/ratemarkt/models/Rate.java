@@ -33,6 +33,8 @@ public interface Rate {
 
 	List<CancellationPolicy> getCancellationPolicies();
 
+	PaymentType getPaymentType();
+
 	@Nullable
 	String getRemarks();
 

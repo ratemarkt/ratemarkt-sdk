@@ -20,7 +20,7 @@ public interface Booking {
 	String getBookingRef();
 
 	String getClientRef();
-	
+
 	String getHotelCode();
 
 	LocalDate getCheckin();
@@ -43,24 +43,29 @@ public interface Booking {
 
 	BigDecimal getBalance();
 
+	PaymentType getPaymentType();
+
+	@Nullable
+	String getBoardType();
+
 	@Nullable
 	String getBoardName();
 
 	@Nullable
 	String getRateKey();
-	
+
 	@Nullable
 	String getHotelName();
-	
+
 	@Nullable
 	String getDestinationCode();
-	
+
 	@Nullable
 	String getDestinationName();
-	
+
 	@Nullable
 	String getCountryCode();
-	
+
 	@Nullable
 	Boolean getNonrefundable();
 
