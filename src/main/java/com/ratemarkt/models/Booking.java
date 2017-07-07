@@ -43,8 +43,6 @@ public interface Booking {
 
 	BigDecimal getBalance();
 
-	PaymentType getPaymentType();
-
 	@Nullable
 	String getBoardType();
 
