@@ -15,11 +15,9 @@ import org.immutables.value.Value;
 @Value.Immutable
 public interface Booking {
 
-	BookingStatus getStatus();
-
 	String getBookingRef();
 
-	String getClientRef();
+	BookingStatus getStatus();
 
 	String getHotelCode();
 
@@ -27,20 +25,28 @@ public interface Booking {
 
 	LocalDate getCheckout();
 
-	Holder getHolder();
-
-	List<Occupancy> getOccupancies();
-
-	OffsetDateTime getCreationDate();
-
-	RateType getRateType();
-
-	List<CancellationPolicy> getCancellationPolicies();
-
 	BigDecimal getTotal();
 
 	Currency getCurrency();
 
+	Holder getHolder();
+
+	Boolean getNonrefundable();
+
+	List<CancellationPolicy> getCancellationPolicies();
+
+	OffsetDateTime getCreationDate();
+
+	@Nullable
+	String getClientRef();
+
+	@Nullable
+	RateType getRateType();
+
+	@Nullable
+	List<Occupancy> getOccupancies();
+
+	@Nullable
 	BigDecimal getBalance();
 
 	@Nullable
@@ -63,9 +69,6 @@ public interface Booking {
 
 	@Nullable
 	String getCountryCode();
-
-	@Nullable
-	Boolean getNonrefundable();
 
 	@Nullable
 	BigDecimal getCancellationCost();

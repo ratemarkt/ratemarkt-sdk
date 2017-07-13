@@ -12,7 +12,7 @@ import com.ratemarkt.models.ImmutableCheckHotelsQuery;
 public abstract class AbstractSupplierConnector<T> extends ConfigurableConnector<T> {
 
 	public enum QuerySupport {
-		DESTINATION_CODE, MULTI_HOTEL_CODE, BOTH
+		DESTINATION_CODE, MULTI_HOTEL_CODE, BOTH, HYBRID
 	}
 
 	public enum MultiRoomSupport {
