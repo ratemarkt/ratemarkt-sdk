@@ -1,5 +1,7 @@
 package com.ratemarkt.models;
 
+import java.util.List;
+
 import javax.annotation.Nullable;
 
 import org.immutables.gson.Gson;
@@ -13,7 +15,7 @@ public interface Room {
 	Integer getNumberOfAdults();
 
 	@Nullable
-	Integer getNumberOfChildren();
+	List<Integer> getChildrenAges();
 
 	@Nullable
 	String getRoomDescription();

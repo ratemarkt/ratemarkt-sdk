@@ -31,6 +31,7 @@ public interface Rate {
 
 	List<Room> getRooms();
 
+	@Nullable
 	List<CancellationPolicy> getCancellationPolicies();
 
 	@Nullable

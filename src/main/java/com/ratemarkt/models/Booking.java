@@ -31,11 +31,13 @@ public interface Booking {
 
 	Holder getHolder();
 
-	Boolean getNonrefundable();
+	OffsetDateTime getCreationDate();
 
+	@Nullable
 	List<CancellationPolicy> getCancellationPolicies();
 
-	OffsetDateTime getCreationDate();
+	@Nullable
+	Boolean getNonrefundable();
 
 	@Nullable
 	String getClientRef();
