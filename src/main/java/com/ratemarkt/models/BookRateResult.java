@@ -1,5 +1,7 @@
 package com.ratemarkt.models;
 
+import javax.annotation.Nullable;
+
 import org.immutables.gson.Gson;
 import org.immutables.value.Value;
 
@@ -7,5 +9,6 @@ import org.immutables.value.Value;
 @Value.Immutable
 public interface BookRateResult extends Result<BookRateQuery> {
 
+	@Nullable
 	Booking getBooking();
 }
