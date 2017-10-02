@@ -15,7 +15,7 @@ import org.immutables.value.Value;
 @Value.Immutable
 public interface Booking extends MetaModel {
 
-	public static final String META_SUPPLIER_REF = "Booking::supplierRef";
+	public static final String META_SUPPLIER_REF = "supplierRef";
 
 	String getBookingRef();
 
