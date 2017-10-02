@@ -16,19 +16,4 @@ public class RateLimitExceededError extends ConnectorError {
 		super(message, cause);
 	}
 
-	@Override
-	public int getHttpStatusCode() {
-		return 429;
-	}
-
-	@Override
-	public int getErrorCode() {
-		return 42900;
-	}
-
-	@Override
-	public String getCaption() {
-		return "Rate limit exceeded error";
-	}
-
 }

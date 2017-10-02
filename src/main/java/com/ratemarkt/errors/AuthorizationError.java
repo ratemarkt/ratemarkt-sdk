@@ -16,19 +16,4 @@ public class AuthorizationError extends ConnectorError {
 		super(message, cause);
 	}
 
-	@Override
-	public int getHttpStatusCode() {
-		return 403;
-	}
-
-	@Override
-	public int getErrorCode() {
-		return 40300;
-	}
-
-	@Override
-	public String getCaption() {
-		return "Authorization error";
-	}
-
 }

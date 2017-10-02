@@ -15,19 +15,4 @@ public class AuthenticationError extends ConnectorError {
 	public AuthenticationError(String message, Throwable cause) {
 		super(message, cause);
 	}
-
-	@Override
-	public int getHttpStatusCode() {
-		return 401;
-	}
-
-	@Override
-	public int getErrorCode() {
-		return 40100;
-	}
-
-	@Override
-	public String getCaption() {
-		return "Authentication error";
-	}
 }

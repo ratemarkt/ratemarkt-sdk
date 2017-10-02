@@ -16,18 +16,4 @@ public class ServiceUnavailableError extends ConnectorError {
 		super(message, cause);
 	}
 
-	@Override
-	public int getErrorCode() {
-		return 50001;
-	}
-
-	@Override
-	public int getHttpStatusCode() {
-		return 503;
-	}
-
-	@Override
-	public String getCaption() {
-		return "Service unavailable";
-	}
 }

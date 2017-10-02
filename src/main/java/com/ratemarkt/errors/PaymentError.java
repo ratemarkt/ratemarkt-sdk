@@ -16,19 +16,4 @@ public class PaymentError extends ConnectorError {
 		super(message, cause);
 	}
 
-	@Override
-	public int getHttpStatusCode() {
-		return 500;
-	}
-
-	@Override
-	public int getErrorCode() {
-		return 51000;
-	}
-
-	@Override
-	public String getCaption() {
-		return "Payment Error";
-	}
-
 }

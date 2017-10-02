@@ -1,33 +1,23 @@
 package com.ratemarkt.errors;
 
-import com.ratemarkt.models.ErrorObj;
-
 public class RemoteError extends ConnectorError {
 
 	private static final long serialVersionUID = 1L;
 
-	private int httpStatusCode;
-	private ErrorObj errorObj;
-
-	public RemoteError(int httpStatusCode, ErrorObj errorObj) {
-		super(errorObj.getMessage());
-		this.errorObj = errorObj;
-		this.httpStatusCode = httpStatusCode;
+	public RemoteError() {
+		super();
 	}
 
-	@Override
-	public int getHttpStatusCode() {
-		return httpStatusCode;
+	public RemoteError(String message) {
+		super(message);
 	}
 
-	@Override
-	public int getErrorCode() {
-		return errorObj.getErrorCode();
+	public RemoteError(Throwable cause) {
+		super(cause);
 	}
 
-	@Override
-	public String getCaption() {
-		return errorObj.getMessage();
+	public RemoteError(String message, Throwable cause) {
+		super(message, cause);
 	}
 
 }

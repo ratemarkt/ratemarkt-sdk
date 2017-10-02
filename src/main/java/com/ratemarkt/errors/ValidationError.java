@@ -16,19 +16,4 @@ public class ValidationError extends ConnectorError {
 		super(message, cause);
 	}
 
-	@Override
-	public int getHttpStatusCode() {
-		return 400;
-	}
-
-	@Override
-	public int getErrorCode() {
-		return 40000;
-	}
-
-	@Override
-	public String getCaption() {
-		return "Validation error";
-	}
-
 }

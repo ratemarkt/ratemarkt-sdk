@@ -16,19 +16,4 @@ public class SystemError extends ConnectorError {
 		super(message, cause);
 	}
 
-	@Override
-	public int getHttpStatusCode() {
-		return 500;
-	}
-
-	@Override
-	public int getErrorCode() {
-		return 50000;
-	}
-
-	@Override
-	public String getCaption() {
-		return "System error";
-	}
-
 }

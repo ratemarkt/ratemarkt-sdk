@@ -20,18 +20,4 @@ public class NotAvailableError extends ConnectorError {
 		super(message, cause);
 	}
 
-	@Override
-	public int getHttpStatusCode() {
-		return 410;
-	}
-
-	@Override
-	public int getErrorCode() {
-		return 41000;
-	}
-
-	@Override
-	public String getCaption() {
-		return "Not available error";
-	}
 }

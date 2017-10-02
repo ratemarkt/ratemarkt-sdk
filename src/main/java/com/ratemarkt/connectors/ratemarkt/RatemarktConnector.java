@@ -14,8 +14,8 @@ import com.google.gson.TypeAdapterFactory;
 import com.google.gson.internal.bind.TypeAdapters;
 import com.ratemarkt.ConfigurableConnector;
 import com.ratemarkt.ConnectorContext;
-import com.ratemarkt.errors.CommunicationError;
-import com.ratemarkt.errors.RemoteError;
+import com.ratemarkt.errors.RatemarktError;
+import com.ratemarkt.errors.ServiceUnavailableError;
 import com.ratemarkt.models.BookRateQuery;
 import com.ratemarkt.models.BookRateResult;
 import com.ratemarkt.models.CancelBookingQuery;
@@ -117,14 +117,14 @@ public class RatemarktConnector extends ConfigurableConnector<RatemarktConfig> {
 		try {
 			response = client.newCall(request).execute();
 		} catch (IOException e) {
-			throw new CommunicationError("Could not contact with server", e);
+			throw new ServiceUnavailableError("Could not contact with server", e);
 		}
 
 		if (response.code() >= 200 && response.code() < 300) {
 			return gson.fromJson(response.body().charStream(), returnType);
 		} else {
 			ErrorObj errorObj = gson.fromJson(response.body().charStream(), ImmutableErrorObj.class);
-			throw new RemoteError(response.code(), errorObj);
+			throw new RatemarktError(response.code(), errorObj);
 		}
 	}
 

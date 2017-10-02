@@ -16,18 +16,4 @@ public class NotFoundError extends ConnectorError {
 		super(message, cause);
 	}
 
-	@Override
-	public int getHttpStatusCode() {
-		return 404;
-	}
-
-	@Override
-	public int getErrorCode() {
-		return 40400;
-	}
-
-	@Override
-	public String getCaption() {
-		return "Not found error";
-	}
 }

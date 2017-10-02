@@ -16,18 +16,4 @@ public class IllegalStateError extends ConnectorError {
 		super(message, cause);
 	}
 
-	@Override
-	public int getHttpStatusCode() {
-		return 409;
-	}
-
-	@Override
-	public int getErrorCode() {
-		return 40900;
-	}
-
-	@Override
-	public String getCaption() {
-		return "Illegal state error";
-	}
 }
