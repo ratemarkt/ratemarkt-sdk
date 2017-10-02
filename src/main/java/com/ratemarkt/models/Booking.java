@@ -13,7 +13,9 @@ import org.immutables.value.Value;
 
 @Gson.TypeAdapters
 @Value.Immutable
-public interface Booking {
+public interface Booking extends MetaModel {
+
+	public static final String META_SUPPLIER_REF = "Booking::supplierRef";
 
 	String getBookingRef();
 
@@ -89,4 +91,5 @@ public interface Booking {
 
 	@Nullable
 	String getRemarks();
+
 }
