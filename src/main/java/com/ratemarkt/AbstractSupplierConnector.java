@@ -1,5 +1,8 @@
 package com.ratemarkt;
 
+import java.util.Hashtable;
+import java.util.Map;
+
 import com.ratemarkt.errors.NotAvailableError;
 import com.ratemarkt.models.CheckHotelQuery;
 import com.ratemarkt.models.CheckHotelResult;
@@ -8,6 +11,7 @@ import com.ratemarkt.models.CheckHotelsResult;
 import com.ratemarkt.models.Hotel;
 import com.ratemarkt.models.ImmutableCheckHotelResult;
 import com.ratemarkt.models.ImmutableCheckHotelsQuery;
+import com.ratemarkt.models.Pax;
 
 public abstract class AbstractSupplierConnector<T> extends ConfigurableConnector<T> {
 
@@ -55,5 +59,25 @@ public abstract class AbstractSupplierConnector<T> extends ConfigurableConnector
 
 	public MultiRoomSupport getMultiRoomSupport() {
 		return MultiRoomSupport.NONE;
+	}
+
+	protected Pax getMostInclusivePax(CheckHotelsQuery query) {
+		// We here justify and align the paxes to the most inclusive one
+		Map<Integer, Pax> scoreToPax = new Hashtable<Integer, Pax>();
+		Integer bestScore = 0;
+		for (int i = 0; i < query.getPaxes().size(); i++) {
+	
+			Pax pax = query.getPaxes().get(i);
+			Integer score = pax.getNumberOfAdults()
+					+ (pax.getChildrenAges().size() * pax.getChildrenAges().stream().max(Integer::max).orElse(0));
+			if (!scoreToPax.containsKey(score)) {
+				scoreToPax.put(score, pax);
+			}
+			if (score > bestScore) {
+				bestScore = score;
+			}
+		}
+		Pax bestPax = scoreToPax.get(bestScore);
+		return bestPax;
 	}
 }

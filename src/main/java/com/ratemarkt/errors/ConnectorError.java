@@ -2,7 +2,7 @@ package com.ratemarkt.errors;
 
 import java.util.Map;
 
-public abstract class ConnectorError extends RuntimeException {
+public class ConnectorError extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;
 
@@ -18,6 +18,11 @@ public abstract class ConnectorError extends RuntimeException {
 
 	public ConnectorError(String message, Throwable cause) {
 		super(message, cause);
+	}
+
+	public ConnectorError(String message, Throwable cause, Map<String, Object> debugData) {
+		super(message, cause);
+		this.debugData = debugData;
 	}
 
 	public ConnectorError(Throwable cause) {

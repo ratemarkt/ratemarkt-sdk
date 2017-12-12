@@ -21,18 +21,23 @@ public interface Booking extends MetaModel {
 
 	BookingStatus getStatus();
 
-	String getHotelCode();
-
-	LocalDate getCheckin();
-
-	LocalDate getCheckout();
-
 	BigDecimal getTotal();
 
 	Currency getCurrency();
 
+	@Nullable
+	String getHotelCode();
+
+	@Nullable
+	LocalDate getCheckin();
+
+	@Nullable
+	LocalDate getCheckout();
+
+	@Nullable
 	Holder getHolder();
 
+	@Nullable
 	OffsetDateTime getCreationDate();
 
 	@Nullable
