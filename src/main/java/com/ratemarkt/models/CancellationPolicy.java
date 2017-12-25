@@ -3,6 +3,8 @@ package com.ratemarkt.models;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 
+import javax.annotation.Nullable;
+
 import org.immutables.gson.Gson;
 import org.immutables.value.Value;
 
@@ -14,4 +16,6 @@ public interface CancellationPolicy {
 
 	OffsetDateTime getFromDate();
 
+	@Nullable
+	CancellationPolicy getSource();
 }
