@@ -66,9 +66,9 @@ public abstract class AbstractSupplierConnector<T> extends ConfigurableConnector
 		Map<Integer, Pax> scoreToPax = new Hashtable<Integer, Pax>();
 		Integer bestScore = 0;
 		for (int i = 0; i < query.getPaxes().size(); i++) {
-	
+
 			Pax pax = query.getPaxes().get(i);
-			Integer score = pax.getNumberOfAdults()
+			Integer score = (pax.getNumberOfAdults() * 30)
 					+ (pax.getChildrenAges().size() * pax.getChildrenAges().stream().max(Integer::max).orElse(0));
 			if (!scoreToPax.containsKey(score)) {
 				scoreToPax.put(score, pax);

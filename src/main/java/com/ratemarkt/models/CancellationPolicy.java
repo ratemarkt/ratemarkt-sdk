@@ -17,5 +17,6 @@ public interface CancellationPolicy {
 	OffsetDateTime getFromDate();
 
 	@Nullable
+	@Gson.Ignore
 	CancellationPolicy getSource();
 }
