@@ -15,12 +15,15 @@ public interface Pax {
 	Integer getNumberOfAdults();
 
 	default String toPaxString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append(String.valueOf(getNumberOfAdults()));
-		for (Integer age : getChildrenAges()) {
-			sb.append(String.valueOf(age));
+		List<String> frags = new ArrayList<String>();
+		frags.add(String.valueOf(getNumberOfAdults()));
+
+		List<Integer> childrenAges = new ArrayList<Integer>(getChildrenAges());
+		childrenAges.sort((a1, a2) -> a1.compareTo(a2));
+		for (Integer age : childrenAges) {
+			frags.add(String.valueOf(age));
 		}
-		return sb.toString();
+		return String.join(",", frags);
 	}
 
 	static Pax fromPaxString(String paxString) {

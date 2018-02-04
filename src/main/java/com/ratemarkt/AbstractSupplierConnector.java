@@ -4,6 +4,8 @@ import java.util.Hashtable;
 import java.util.Map;
 
 import com.ratemarkt.errors.NotAvailableError;
+import com.ratemarkt.models.CheckBookingsQuery;
+import com.ratemarkt.models.CheckBookingsResult;
 import com.ratemarkt.models.CheckHotelQuery;
 import com.ratemarkt.models.CheckHotelResult;
 import com.ratemarkt.models.CheckHotelsQuery;
@@ -79,5 +81,10 @@ public abstract class AbstractSupplierConnector<T> extends ConfigurableConnector
 		}
 		Pax bestPax = scoreToPax.get(bestScore);
 		return bestPax;
+	}
+
+	@Override
+	public CheckBookingsResult checkBookings(ConnectorContext context, CheckBookingsQuery query) {
+		throw new UnsupportedOperationException();
 	}
 }
