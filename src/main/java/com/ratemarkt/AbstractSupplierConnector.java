@@ -1,6 +1,9 @@
 package com.ratemarkt;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Hashtable;
+import java.util.List;
 import java.util.Map;
 
 import com.ratemarkt.errors.NotAvailableError;
@@ -81,6 +84,27 @@ public abstract class AbstractSupplierConnector<T> extends ConfigurableConnector
 		}
 		Pax bestPax = scoreToPax.get(bestScore);
 		return bestPax;
+	}
+
+	protected <E> List<List<E>> cartesianProduct(Collection<List<E>> collections) {
+		List<List<E>> lists = new ArrayList<List<E>>(collections);
+		List<List<E>> resultLists = new ArrayList<List<E>>();
+		if (lists.size() == 0) {
+			resultLists.add(new ArrayList<E>());
+			return resultLists;
+		} else {
+			List<E> firstList = lists.get(0);
+			List<List<E>> remainingLists = cartesianProduct(lists.subList(1, lists.size()));
+			for (E condition : firstList) {
+				for (List<E> remainingList : remainingLists) {
+					ArrayList<E> resultList = new ArrayList<E>();
+					resultList.add(condition);
+					resultList.addAll(remainingList);
+					resultLists.add(resultList);
+				}
+			}
+		}
+		return resultLists;
 	}
 
 	@Override
